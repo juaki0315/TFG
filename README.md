@@ -1,2 +1,2 @@
 # TFG
-El juego del tfg
+Este es el repositorio del TFG 
