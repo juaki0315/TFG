@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
-    public float damage = 1;
+    public int damage = 1;
     Vector2 rightAttackOffset;
 
     private void Start()
@@ -36,11 +36,13 @@ public class SwordAttack : MonoBehaviour
     {
         if (collision.tag == "EnemyController")
         {
+            print("aaa");
             EnemyController enemy = collision.GetComponent<EnemyController>();
 
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                print("enemy =! null");
+                enemy.Health -= damage;
             }
         }
     }

@@ -35649,6 +35649,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 7786709713714368256, guid: caa323e05fd1b9149918e117183ffbb6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786709713714368256, guid: caa323e05fd1b9149918e117183ffbb6, type: 3}
+      propertyPath: m_Size.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786709713714368256, guid: caa323e05fd1b9149918e117183ffbb6, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786709713714368256, guid: caa323e05fd1b9149918e117183ffbb6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7867677541399894652, guid: caa323e05fd1b9149918e117183ffbb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.54

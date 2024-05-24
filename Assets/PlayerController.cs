@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     bool canMove = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

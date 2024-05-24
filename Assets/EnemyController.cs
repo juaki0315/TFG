@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    public float health = 1;
+    public int health = 1;
 
-    public float Health {
+    public int Health {
         set 
         { 
             health = value;
@@ -20,11 +20,6 @@ public class EnemyController : MonoBehaviour
         {
             return health;
         }
-    }
-
-    public void TakeDamage(float damage) 
-    {
-        Health -= damage;
     }
 
     public void EnemyDefeated() 
