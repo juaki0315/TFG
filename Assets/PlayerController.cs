@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Takes and handles input and movement for a player character
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 1f;
@@ -33,7 +32,6 @@ public class PlayerController : MonoBehaviour
         {
             if (movementInput != Vector2.zero)
             {
-
                 bool success = TryMove(movementInput);
 
                 if (!success)
@@ -67,8 +65,8 @@ public class PlayerController : MonoBehaviour
     private bool TryMove(Vector2 direction)
     {
         if (direction != Vector2.zero)
-        {            
-            int count = rb.Cast(direction, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset); 
+        {
+            int count = rb.Cast(direction, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset);
 
             if (count == 0)
             {
@@ -84,7 +82,6 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
-
     }
 
     void OnMove(InputValue movementValue)
@@ -109,10 +106,6 @@ public class PlayerController : MonoBehaviour
         {
             swordAttack.AttackRight();
         }
-        else 
-        {
-            EndSwordAttack();
-        }
     }
 
     public void EndSwordAttack()
@@ -130,5 +123,4 @@ public class PlayerController : MonoBehaviour
     {
         canMove = true;
     }
-        
 }

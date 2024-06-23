@@ -1,29 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    public int health = 3;
 
-    public int health = 1;
-
-    public int Health {
-        set 
-        { 
-            health = value;
-            if (health < 1) 
-            {
-                EnemyDefeated();
-            }
-        }
-        get
-        {
-            return health;
-        }
-    }
-
-    public void EnemyDefeated() 
+    // Método para recibir daño
+    public void TakeDamage(int damage)
     {
-        Destroy(gameObject);
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);  // Destruye el objeto si la salud llega a 0 o menos.
+        }
     }
 }
