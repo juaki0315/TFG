@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class HeartsManager : MonoBehaviour
 {
-    public int maxHearts = 3; // Número máximo de corazones
-    public int currentHearts; // Corazones actuales del jugador
-    public GameObject heartPrefab; // Prefab del corazón
+    public int maxHearts = 3;
+    public int currentHearts;
+    public GameObject heartPrefab;
 
-    private GameObject[] hearts; // Array para almacenar los corazones
+    private GameObject[] hearts;
 
     void Start()
     {

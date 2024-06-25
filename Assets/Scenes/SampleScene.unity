@@ -36119,7 +36119,7 @@ GameObject:
   - component: {fileID: 1639212359}
   - component: {fileID: 1639212361}
   m_Layer: 0
-  m_Name: TriggerDinosaurio
+  m_Name: TriggerSalaFinal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36415,7 +36415,7 @@ GameObject:
   - component: {fileID: 1992384618}
   - component: {fileID: 1992384617}
   m_Layer: 0
-  m_Name: BackgroundMusic1
+  m_Name: BackgroundMusicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36634,6 +36634,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1354686006132779363, guid: 468fe5017c732dd41acac31d95a754b3, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354686006132779363, guid: 468fe5017c732dd41acac31d95a754b3, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1699021035293748087, guid: 468fe5017c732dd41acac31d95a754b3, type: 3}

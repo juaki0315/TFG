@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float damage = 1;
     public ContactFilter2D movementFilter;
     public SwordAttack swordAttack;
+    public HeartsManager heartsManager; // Referencia al HeartsManager
 
     Vector2 movementInput;
     SpriteRenderer spriteRenderer;
@@ -24,6 +25,12 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (heartsManager == null)
+        {
+            // Busca un HeartsManager en la escena si no se ha asignado uno en el Inspector
+            heartsManager = FindObjectOfType<HeartsManager>();
+        }
     }
 
     private void FixedUpdate()
@@ -122,5 +129,21 @@ public class PlayerController : MonoBehaviour
     public void UnlockMovement()
     {
         canMove = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyController"))
+        {
+            if (heartsManager != null)
+            {
+                heartsManager.LoseHeart();
+            }
+
+            if (heartsManager.currentHearts <= 0)
+            {
+                Debug.Log("Player is Dead");
+            }
+        }
     }
 }
