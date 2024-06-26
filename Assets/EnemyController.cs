@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);  // Destruye el objeto si la salud llega a 0 o menos.
+            Destroy(gameObject);
         }
     }
 }
