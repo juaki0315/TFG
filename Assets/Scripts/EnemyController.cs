@@ -90,19 +90,19 @@ public class EnemyController : MonoBehaviour
         }
 
         float elapsedTime = Time.time - gameStartTime;
-        if (elapsedTime <= 30)
+        if (elapsedTime <= 20)
         {
             scoreManager.AddPoints(30);
         }
-        else if (elapsedTime <= 45)
+        else if (elapsedTime <= 30)
         {
             scoreManager.AddPoints(20);
         }
-        else if (elapsedTime <= 60)
+        else if (elapsedTime <= 40)
         {
             scoreManager.AddPoints(10);
         }
-        else if (elapsedTime <= 120)
+        else if (elapsedTime <= 60)
         {
             scoreManager.AddPoints(5);
         }
