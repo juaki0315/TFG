@@ -5,13 +5,12 @@ using UnityEngine.AI;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public Transform target; 
-    public Collider2D detectionZone; 
+    public Transform target;
+    public Collider2D detectionZone;
     private NavMeshAgent agent;
-    public bool playerInZone = false; 
-    private bool isCollidingWithPlayer = false; 
-    private SpriteRenderer spriteRenderer; 
-
+    private bool isCollidingWithPlayer = false;
+    private SpriteRenderer spriteRenderer;
+    public bool isActivated = false; 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -23,23 +22,17 @@ public class FollowPlayer : MonoBehaviour
 
     void Update()
     {
-        if (playerInZone && target != null && !isCollidingWithPlayer)
+        if (isActivated)
         {
-            agent.SetDestination(target.position);
-            FlipSprite();
-        }
-        else if (playerInZone && target != null && isCollidingWithPlayer)
-        {
-            agent.ResetPath();
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("Se ha pisdao");
-        if (other.CompareTag("Player"))
-        {
-            playerInZone = true;
+            if (isActivated && target != null && !isCollidingWithPlayer)
+            {
+                agent.SetDestination(target.position);
+                FlipSprite();
+            }
+            else if (isActivated && target != null && isCollidingWithPlayer)
+            {
+                agent.ResetPath();
+            }
         }
     }
 

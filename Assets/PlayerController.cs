@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public SwordAttack swordAttack;
     public HeartsManager heartsManager;
     public bool playerInZone = false;
+
+    private FollowPlayer enemyController;
 
     Vector2 movementInput;
     SpriteRenderer spriteRenderer;
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
         {
             heartsManager = FindObjectOfType<HeartsManager>();
         }
+
+        enemyController = FindObjectOfType<FollowPlayer>();
     }
 
     private void FixedUpdate()
@@ -131,6 +136,7 @@ public class PlayerController : MonoBehaviour
     {
         canMove = true;
     }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EnemyController"))
@@ -145,8 +151,22 @@ public class PlayerController : MonoBehaviour
                 if (heartsManager.currentHearts <= 0)
                 {
                     Debug.Log("Player is Dead");
+                    RestartGame();
                 }
             }
         }
+        else if (collision.gameObject.CompareTag("FinalRoom"))
+        {
+            if (enemyController != null)
+            {
+                enemyController.isActivated = true;
+            }
+        }
+    }
+
+    void RestartGame()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 }
