@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 public class EnemyController : MonoBehaviour
 {
     public int health = 3;
-    public GameObject victoryCanvas; // Referencia al Canvas de victoria
-    public AudioClip victoryMusic; // Referencia a la música de victoria
-    public Image victoryImage; // Referencia a la imagen de victoria
-    public Text finalScoreText; // Texto para mostrar la puntuación final
+    public GameObject victoryCanvas;
+    public AudioClip victoryMusic;
+    public Image victoryImage;
+    public Text finalScoreText;
 
-    private AudioSource audioSource; // Referencia al AudioSource del canvas de victoria
-    private AudioSource backgroundMusic; // Referencia al AudioSource de la música de fondo
-    private ScoreManager scoreManager; // Referencia al ScoreManager
-    private PlayerController playerController; // Referencia al script del jugador
-    private float gameStartTime; // Tiempo de inicio del juego
+    private AudioSource audioSource;
+    private AudioSource backgroundMusic;
+    private ScoreManager scoreManager;
+    private PlayerController playerController;
+    private float gameStartTime;
 
     void Start()
     {
@@ -83,9 +83,9 @@ public class EnemyController : MonoBehaviour
     {
         if (playerController != null && playerController.heartsManager != null)
         {
-            if (playerController.heartsManager.currentHearts == playerController.heartsManager.maxHearts)
+            if (playerController.heartsManager.currentHearts != 0)
             {
-                scoreManager.AddPoints(30);
+                scoreManager.AddPoints(playerController.heartsManager.currentHearts * 10);
             }
         }
 
