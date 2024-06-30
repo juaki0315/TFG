@@ -6,14 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
-    public int health = 3;
+    public int health;
     public GameObject victoryCanvas;
     public AudioClip victoryMusic;
     public Image victoryImage;
     public Text finalScoreText;
 
     private AudioSource audioSource;
-    private AudioSource backgroundMusic;
     private ScoreManager scoreManager;
     private PlayerController playerController;
     private float gameStartTime;
@@ -24,13 +23,6 @@ public class EnemyController : MonoBehaviour
         {
             victoryCanvas.SetActive(false);
             audioSource = victoryCanvas.GetComponent<AudioSource>();
-        }
-
-
-        GameObject bgMusicController = GameObject.Find("BackgroundMusicController");
-        if (bgMusicController != null)
-        {
-            backgroundMusic = bgMusicController.GetComponent<AudioSource>();
         }
 
         if (victoryImage != null)
@@ -67,49 +59,14 @@ public class EnemyController : MonoBehaviour
             }
             if (audioSource != null && victoryMusic != null)
             {
-                if (backgroundMusic != null)
-                {
-                    backgroundMusic.Stop();
-                }
                 audioSource.clip = victoryMusic;
                 audioSource.Play();
             }
 
-            CalculateAndShowFinalScore();
-        }
-    }
-
-    void CalculateAndShowFinalScore()
-    {
-        if (playerController != null && playerController.heartsManager != null)
-        {
-            if (playerController.heartsManager.currentHearts != 0)
+            if (scoreManager != null && playerController != null && playerController.heartsManager != null)
             {
-                scoreManager.AddPoints(playerController.heartsManager.currentHearts * 10);
+                scoreManager.CalculateAndShowFinalScore(playerController.heartsManager.currentHearts, Time.time - gameStartTime, finalScoreText);
             }
-        }
-
-        float elapsedTime = Time.time - gameStartTime;
-        if (elapsedTime <= 20)
-        {
-            scoreManager.AddPoints(30);
-        }
-        else if (elapsedTime <= 30)
-        {
-            scoreManager.AddPoints(20);
-        }
-        else if (elapsedTime <= 40)
-        {
-            scoreManager.AddPoints(10);
-        }
-        else if (elapsedTime <= 60)
-        {
-            scoreManager.AddPoints(5);
-        }
-
-        if (finalScoreText != null)
-        {
-            finalScoreText.text = "Final Score: " + scoreManager.GetScore().ToString();
         }
     }
 }

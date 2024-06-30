@@ -10,7 +10,7 @@ public class SwordAttack : MonoBehaviour
 
     private void Start()
     {
-        rightAttackOffset = transform.localPosition;  // Asegúrate de usar localPosition para obtener la posición relativa.
+        rightAttackOffset = transform.localPosition;
     }
 
     public void AttackRight()
@@ -36,7 +36,6 @@ public class SwordAttack : MonoBehaviour
     {
         if (collision.CompareTag("EnemyController"))
         {
-            print("aaa");
             EnemyController enemy = collision.GetComponent<EnemyController>();
 
             if (enemy != null)
